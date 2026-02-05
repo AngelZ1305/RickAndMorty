@@ -1,12 +1,14 @@
-Rick and Morty API Viewer
-A simple web application that consumes the Rick and Morty API and displays character data.
+# Rick and Morty API Explorer
 
-Features
-Fetches data from the Rick and Morty public API
-Displays characters with name, image, status, and species
-Simple and responsive UI
+A simple web app that consumes the Rick and Morty API and displays character data.
 
-API
+## Features
+- Fetches data from the Rick and Morty public API
+- Displays characters: name, image, status, and species
+- Simple responsive UI
 
-Rick and Morty API
-https://rickandmortyapi.com/api/character
+## Live Demo
+https://angelz1305.github.io/RickAndMorty/
+
+## API
+Rick and Morty API: https://rickandmortyapi.com/api/character
