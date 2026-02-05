@@ -1,22 +1,33 @@
-
+let nextPageUrl = 'https://rickandmortyapi.com/api/character'
 
 async function getCharacters() {
-    try {
-        const response = await fetch('https://rickandmortyapi.com/api/character')
+  try {
+    const response = await fetch(nextPageUrl)
 
-        if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`)
-        }
-
-        const data = await response.json()
-        console.log(data)
-        return data.results
-
-    } catch (error) {
-        console.error('Error al consumir la API:', error)
-        return []
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
     }
+
+    const data = await response.json()
+
+    nextPageUrl = data.info.next
+
+    return data.results
+
+  } catch (error) {
+    console.error('Error al consumir la API:', error)
+    return []
+  }
 }
+
+document.getElementById('nextPage').addEventListener('click', async () => {
+  if (!nextPageUrl) {
+    alert('No hay más páginas')
+    return
+  }
+
+  await showCharacters()
+})
 
 
 
@@ -24,6 +35,7 @@ async function showCharacters() {
     const container = document.getElementById('characters')
     if (!container) return
 
+    container.innerHTML = ''
     const characters = await getCharacters()
 
     let statusClass = 'text-gray-400'
